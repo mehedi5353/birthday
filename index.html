@@ -1,1 +1,1153 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>শুভ ২০তম জন্মদিন, সুমাইয়া ❤️ | ইতি, মেহেদী</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Elegant Bengali Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Galada&family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Canvas Confetti for Birthday Celebration -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+    <style>
+        :root {
+            --rose-soft: #fff0f5;
+            --rose-primary: #e11d48;
+            --rose-deep: #9f1239;
+            --cream-paper: #fffdf9;
+            --gold-accent: #d97706;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e6 45%, #fdf2f8 100%);
+            color: #3f1d2b;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-script {
+            font-family: 'Galada', cursive;
+        }
+
+        .font-serif-bn {
+            font-family: 'Noto Serif Bengali', serif;
+        }
+
+        /* Floating Petals & Hearts Background */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-item {
+            position: absolute;
+            bottom: -50px;
+            opacity: 0.45;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.55;
+            }
+            80% {
+                opacity: 0.45;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Glassmorphism Storybook Card */
+        .story-card {
+            background: rgba(255, 253, 249, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 207, 232, 0.7);
+            box-shadow: 0 20px 50px -12px rgba(190, 24, 93, 0.14);
+        }
+
+        /* Polaroid Frame Styling */
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 22px 12px;
+            border-radius: 6px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(225, 29, 72, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 75px;
+            height: 22px;
+            background: rgba(254, 205, 211, 0.75);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            z-index: 5;
+        }
+
+        .polaroid:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.03) !important;
+            box-shadow: 0 22px 40px rgba(225, 29, 72, 0.22);
+            z-index: 20;
+        }
+
+        /* 3D Birthday Cake & Candle Flame */
+        .flame {
+            width: 16px;
+            height: 26px;
+            background: radial-gradient(ellipse at bottom, #fff7ed 0%, #fbbf24 45%, #f97316 85%, transparent 100%);
+            border-radius: 50% 50% 35% 35%;
+            box-shadow: 0 0 16px #fbbf24, 0 0 30px #f59e0b;
+            animation: flicker 0.18s infinite alternate;
+            transform-origin: bottom center;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .flame.out {
+            opacity: 0;
+            transform: scale(0);
+            animation: none;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); }
+            100% { transform: scale(1.08, 0.94) rotate(2deg); }
+        }
+
+        .smoke {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: rgba(156, 163, 175, 0.6);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .smoke.rising {
+            animation: smokeRise 1.6s ease-out forwards;
+        }
+
+        @keyframes smokeRise {
+            0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+            100% { opacity: 0; transform: translate(-30%, -45px) scale(2.8); }
+        }
+
+        /* 3D Envelope Animation */
+        .envelope-wrapper {
+            perspective: 1200px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            height: 290px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #fda4af, #fb7185);
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(225, 29, 72, 0.25);
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: visible;
+        }
+
+        .envelope:hover {
+            transform: translateY(-4px);
+        }
+
+        .envelope.open {
+            height: 520px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .envelope.open {
+                height: 580px;
+            }
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(180deg, #f43f5e, #e11d48);
+            clip-path: polygon(0 0, 50% 95%, 100% 0);
+            transform-origin: top;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 4;
+            border-radius: 14px 14px 0 0;
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        /* Letter Paper Inside the Envelope */
+        .letter-sheet {
+            position: absolute;
+            left: 5%;
+            bottom: 14px;
+            width: 90%;
+            height: 230px;
+            background: #fffdf7;
+            border: 2px solid rgba(253, 230, 138, 0.9);
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            z-index: 2;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(0) scale(0.95);
+            transition: all 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .envelope.open .letter-sheet {
+            opacity: 1;
+            bottom: 24px;
+            height: 465px;
+            transform: translateY(-18px) scale(1);
+            z-index: 5;
+            overflow-y: auto;
+            box-shadow: 0 20px 45px rgba(190, 18, 60, 0.22);
+        }
+
+        @media (max-width: 640px) {
+            .envelope.open .letter-sheet {
+                height: 525px;
+            }
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 290px;
+            background: linear-gradient(135deg, #fecdd3 0%, #fda4af 100%);
+            clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+            border-radius: 0 0 14px 14px;
+            z-index: 3;
+            transition: opacity 0.4s ease;
+        }
+
+        .envelope.open .envelope-pocket {
+            pointer-events: none;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 122px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 58px;
+            height: 58px;
+            background: radial-gradient(circle at 30% 30%, #fbbf24, #b45309);
+            border-radius: 50%;
+            z-index: 6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 2px dashed #fef3c7;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .envelope.open .wax-seal {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.5);
+        }
+
+        /* Flip Cards for Reasons Why I Love You */
+        .flip-card {
+            perspective: 1000px;
+            height: 175px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+            border: 2px solid #fecdd3;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.08);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #e11d48, #be123c);
+            color: white;
+            transform: rotateY(180deg);
+            box-shadow: 0 10px 24px rgba(190, 18, 60, 0.25);
+        }
+
+        /* Music Equalizer Bars */
+        .eq-bar {
+            width: 3px;
+            height: 14px;
+            background: #e11d48;
+            border-radius: 2px;
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+            animation-play-state: paused;
+        }
+
+        .playing .eq-bar {
+            animation-play-state: running;
+        }
+
+        .eq-bar:nth-child(2) { animation-delay: 0.2s; height: 18px; }
+        .eq-bar:nth-child(3) { animation-delay: 0.4s; height: 10px; }
+        .eq-bar:nth-child(4) { animation-delay: 0.15s; height: 16px; }
+
+        @keyframes eqBounce {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1.1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff1f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fda4af;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f43f5e;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rose-200 selection:text-rose-900 pb-28">
+
+    <!-- Floating Hearts & Flowers Container -->
+    <div id="floatingBg" class="floating-bg"></div>
+
+    <!-- Main Storybook Container -->
+    <main class="relative z-10 max-w-4xl mx-auto px-4 pt-8 space-y-14">
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 1: WELCOME & COUNTDOWN (৬ ডিসেম্বর ২০২৬) -->
+        <!-- ========================================================= -->
+        <section id="chapter-1" class="story-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 bg-rose-100/90 text-rose-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4 border border-rose-200">
+                <span>✨ অধ্যায় ০১ • বিশেষ একটি দিন ✨</span>
+            </div>
+
+            <h1 class="font-script text-4xl sm:text-6xl text-rose-600 leading-tight drop-shadow-sm mb-3">
+                শুভ ২০তম জন্মদিন,<br>আমার ভালোবাসা সুমাইয়া ❤️
+            </h1>
+
+            <p class="font-serif-bn text-lg sm:text-xl text-amber-700 font-semibold mb-4">
+                📅 ৬ ডিসেম্বর ২০২৬ • জীবনের বিশতম বসন্তে স্বাগতম
+            </p>
+
+            <p class="max-w-2xl mx-auto text-gray-700 text-base sm:text-lg leading-relaxed mb-7">
+                আজকের এই বিশেষ দিনটি শুধুমাত্র তোমার জন্য সাজানো একটি ছোট্ট ভালোবাসার বই। প্রতিটি পাতায় লুকিয়ে আছে আমাদের কিছু সুন্দর মুহূর্ত আর আমার না বলা অনেক কথা।
+            </p>
+
+            <!-- Flower Bouquet Slideshow Box -->
+            <div class="bg-gradient-to-r from-rose-50 via-pink-50 to-amber-50 border border-rose-200 rounded-2xl p-4 sm:p-5 max-w-md mx-auto mb-6 shadow-inner">
+                <div class="relative w-full h-56 sm:h-64 overflow-hidden rounded-xl shadow-md bg-white flex items-center justify-center">
+                    <img id="bouquetSlideImg" src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80" alt="ফুলের তোড়া" class="w-full h-full object-cover transition-opacity duration-700">
+                    <div id="bouquetFallbackSvg" class="hidden w-full h-full flex-col items-center justify-center bg-gradient-to-br from-rose-100 to-pink-200 p-4">
+                        <span class="text-6xl mb-2">💐</span>
+                        <span class="font-script text-2xl text-rose-700">তোমার জন্য একগুচ্ছ ভালোবাসার ফুল</span>
+                    </div>
+                    <div class="absolute bottom-2 inset-x-0 flex justify-center gap-1.5" id="bouquetDots"></div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <button onclick="startJourney()" class="bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg shadow-rose-300/60 transition transform hover:scale-105 active:scale-95 flex items-center gap-2">
+                    <span>🎵 গান চালিয়ে গল্প শুরু করো</span>
+                </button>
+                <a href="#chapter-2" class="bg-white hover:bg-rose-50 text-rose-600 border border-rose-300 font-semibold px-6 py-3 rounded-full transition">
+                    নিচে স্ক্রল করো ↓
+                </a>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 2: INTERACTIVE 20TH BIRTHDAY CAKE -->
+        <!-- ========================================================= -->
+        <section id="chapter-2" class="story-card rounded-3xl p-6 sm:p-10 text-center">
+            <span class="inline-block bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                🎂 অধ্যায় ০২ • জন্মদিনের কেক ও উইশ
+            </span>
+            <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">চোখ বন্ধ করে একটা উইশ করো!</h2>
+            <p class="text-gray-600 text-sm sm:text-base mb-8">প্রথমে ফুঁ দিয়ে ২০তম জন্মদিনের মোমবাতি নেভাও, তারপর কেক কাটো ✨</p>
+
+            <!-- Cake Illustration Area -->
+            <div class="relative max-w-xs mx-auto pt-12 pb-6 select-none">
+                <!-- "20" Candles -->
+                <div class="flex justify-center items-end gap-6 mb-1 relative z-20">
+                    <!-- Candle 2 -->
+                    <div class="relative flex flex-col items-center">
+                        <div id="flame1" class="flame mb-1"></div>
+                        <div id="smoke1" class="smoke"></div>
+                        <div class="w-7 h-12 bg-gradient-to-b from-amber-300 to-amber-500 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-xl border border-amber-200">২</div>
+                    </div>
+                    <!-- Candle 0 -->
+                    <div class="relative flex flex-col items-center">
+                        <div id="flame2" class="flame mb-1"></div>
+                        <div id="smoke2" class="smoke"></div>
+                        <div class="w-7 h-12 bg-gradient-to-b from-rose-400 to-rose-600 rounded-lg shadow-md flex items-center justify-center text-white font-bold text-xl border border-rose-200">০</div>
+                    </div>
+                </div>
+
+                <!-- Top Tier -->
+                <div class="w-44 h-16 mx-auto bg-gradient-to-r from-pink-200 via-rose-100 to-pink-200 rounded-t-2xl border-b-4 border-rose-300 relative shadow-md flex items-center justify-center">
+                    <div class="absolute -top-2 left-0 w-full flex justify-around px-2">
+                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                        <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                    </div>
+                    <span class="font-script text-rose-600 text-lg mt-1">সুমাইয়া ❤️</span>
+                </div>
+
+                <!-- Bottom Tier -->
+                <div class="w-60 h-20 mx-auto bg-gradient-to-r from-rose-400 via-pink-500 to-rose-400 rounded-t-xl rounded-b-lg relative shadow-xl flex flex-col items-center justify-center overflow-hidden">
+                    <!-- Frosting drips -->
+                    <div class="absolute top-0 left-0 w-full flex justify-between">
+                        <div class="w-8 h-5 bg-rose-100 rounded-b-full"></div>
+                        <div class="w-8 h-7 bg-rose-100 rounded-b-full"></div>
+                        <div class="w-8 h-4 bg-rose-100 rounded-b-full"></div>
+                        <div class="w-8 h-6 bg-rose-100 rounded-b-full"></div>
+                        <div class="w-8 h-5 bg-rose-100 rounded-b-full"></div>
+                        <div class="w-8 h-6 bg-rose-100 rounded-b-full"></div>
+                    </div>
+                    <span class="text-white/95 font-semibold text-sm mt-3 tracking-wide">শুভ ২০তম জন্মদিন</span>
+                    <!-- Slice cut line (hidden until cut) -->
+                    <div id="cakeSliceLine" class="hidden absolute inset-y-0 left-1/2 w-1 bg-amber-200 shadow-lg animate-pulse"></div>
+                </div>
+
+                <!-- Cake Plate -->
+                <div class="w-72 h-4 mx-auto bg-gradient-to-r from-gray-200 via-white to-gray-200 rounded-full shadow-md border border-gray-300"></div>
+            </div>
+
+            <!-- Cake Controls -->
+            <div class="mt-4 flex flex-wrap justify-center gap-3">
+                <button id="blowCandleBtn" onclick="blowOutCandles()" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition transform hover:scale-105 active:scale-95">
+                    ফুঁ দিয়ে মোমবাতি নেভাও 🕯️
+                </button>
+                <button id="cutCakeBtn" onclick="cutBirthdayCake()" class="hidden bg-rose-600 hover:bg-rose-700 text-white font-semibold px-6 py-3 rounded-full shadow-md transition transform hover:scale-105 active:scale-95">
+                    এবার কেক কাটো 🔪🎂
+                </button>
+            </div>
+            <p id="cakeStatusMsg" class="mt-4 text-rose-700 font-medium text-sm sm:text-base min-h-[24px]"></p>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 3: ANIMATED LOVE LETTER ENVELOPE -->
+        <!-- ========================================================= -->
+        <section id="chapter-3" class="story-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-8">
+                <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                    💌 অধ্যায় ০৩ • হৃদয়ের গভীর থেকে লেখা চিঠি
+                </span>
+                <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">তোমার জন্য একটি বিশেষ চিঠি</h2>
+                <p class="text-gray-600 text-sm sm:text-base">খামের সোনালি সিলমোহরে ক্লিক করে ভেতর থেকে চিঠিটি বের করো</p>
+            </div>
+
+            <!-- Interactive Envelope (Letter emerges directly from inside) -->
+            <div class="envelope-wrapper mb-4">
+                <div id="loveEnvelope" class="envelope" onclick="toggleLetter()">
+                    <div class="envelope-flap"></div>
+                    <div class="wax-seal">
+                        <span class="text-white font-bold text-lg">❤️</span>
+                    </div>
+
+                    <!-- Letter Paper inside the envelope -->
+                    <div id="letterContent" class="letter-sheet text-left">
+                        <div class="flex justify-between items-center border-b border-rose-100 pb-2.5 mb-4 text-xs sm:text-sm text-rose-600 font-semibold">
+                            <span>প্রিয়তমা সুমাইয়া,</span>
+                            <span>৬ ডিসেম্বর ২০২৬</span>
+                        </div>
+
+                        <div class="font-serif-bn text-gray-800 text-sm sm:text-base leading-relaxed space-y-3">
+                            <p>
+                                শুভ ২০তম জন্মদিন, আমার জান! আজ তুমি জীবনের ২০তম বসন্তে পা রাখলে। ভাবতেই কী যে ভালো লাগছে, তোমার এই বিশেষ দিনটিতে আমি তোমার পাশে আছি।
+                            </p>
+                            <p>
+                                তুমি আমার জীবনে আসার পর থেকে প্রতিটি সাধারণ দিনও যেন উৎসবে পরিণত হয়েছে। রিকশায় পাশাপাশি বসে থাকা, তোমার হাতে দেওয়া একগুচ্ছ কৃষ্ণচূড়া, আমার শার্টের পকেটে গুঁজে দেওয়া হলুদ ফুল, কিংবা তোমার রেশমি চুড়ির শব্দ—সবকিছুই আমার কাছে অমূল্য সম্পদ।
+                            </p>
+                            <p>
+                                সৃষ্টিকর্তার কাছে আমার একটাই প্রার্থনা—তোমার মুখের এই মিষ্টি হাসিটা যেন সারাজীবন অমলিন থাকে। তোমার সব স্বপ্ন পূরণ হোক, আর জীবনের প্রতিটি চড়াই-উতরাইয়ে আমি যেন তোমার হাতটা এভাবেই শক্ত করে ধরে রাখতে পারি।
+                            </p>
+                            <p class="text-rose-700 font-semibold pt-1">
+                                ভালোবাসি তোমায়, অনেক বেশি ভালোবাসি।
+                            </p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-rose-100 flex items-center justify-between">
+                            <span class="text-[11px] text-gray-400">খাম বন্ধ করতে ট্যাপ করো</span>
+                            <p class="font-script text-xl sm:text-2xl text-rose-600">ইতি, তোমারই মেহেদী ❤️</p>
+                        </div>
+                    </div>
+
+                    <div class="envelope-pocket flex flex-col items-center justify-end pb-6 px-4 text-center">
+                        <p class="font-script text-2xl text-rose-900">প্রিয়তমা সুমাইয়া</p>
+                        <p class="text-xs text-rose-800 font-medium mt-1">খুলতে এখানে ট্যাপ করো ✨</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 4: POLAROID SCRAPBOOK GALLERY (ALL UPLOADED PHOTOS) -->
+        <!-- ========================================================= -->
+        <section id="chapter-4" class="story-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-8">
+                <span class="inline-block bg-pink-100 text-pink-700 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                    📸 অধ্যায় ০৪ • আমাদের ফ্রেমবন্দি ভালোবাসা
+                </span>
+                <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">স্মৃতির পোলারয়েড অ্যালবাম</h2>
+                <p class="text-gray-600 text-sm sm:text-base">প্রতিটি ছবির পেছনে লুকিয়ে আছে এক একটি ভালোবাসার গল্প (ছবিতে ক্লিক করলে বড় করে দেখা যাবে)</p>
+            </div>
+
+            <!-- Polaroid Grid -->
+            <div id="polaroidGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 pt-2">
+                <!-- Cards injected cleanly via JavaScript -->
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 5: 6 REASONS WHY I LOVE YOU (INTERACTIVE FLIP CARDS) -->
+        <!-- ========================================================= -->
+        <section id="chapter-5" class="story-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-8">
+                <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                    💖 অধ্যায় ০৫ • কেন তোমায় এত ভালোবাসি
+                </span>
+                <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">তোমাকে ভালোবাসার ৬টি কারণ</h2>
+                <p class="text-gray-600 text-sm sm:text-base">প্রতিটি কার্ডে ট্যাপ করে দেখো ভেতরে কী লেখা আছে ✨</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+                <!-- Card 1 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">👀</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০১</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “তোমার ওই মায়াবী চোখের চাহনি—যার দিকে তাকালে আমি আমার সব দুঃখ-কষ্ট ভুলে যাই।”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">😊</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০২</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “তোমার মিষ্টি হাসিটা, যা আমার প্রতিটি খারাপ দিনকেও মুহূর্তেই সুন্দর করে তোলে।”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">🌸</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০৩</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “ছোট্ট ছোট্ট জিনিসে তোমার আনন্দ খুঁজে নেওয়া—যেমন পথের ধারের বুনো ফুল কিংবা একসাথে আইসক্রিম খাওয়া।”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">🤍</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০৪</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “আমার প্রতি তোমার নিঃস্বার্থ যত্ন আর ভালোবাসা, যা আমাকে পৃথিবীর সবচেয়ে ভাগ্যবান মানুষ মনে করায়।”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">🤝</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০৫</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “যেকোনো পরিস্থিতিতে আমার পাশে থাকা এবং আমাকে বোঝার অদ্ভুত সুন্দর ক্ষমতা।”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-3xl mb-2">✨</span>
+                            <h3 class="font-bold text-rose-700 text-lg">কারণ #০৬</h3>
+                            <p class="text-xs text-rose-500 mt-1">ট্যাপ করে খোলো</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="text-sm sm:text-base leading-relaxed font-medium">
+                                “কারণ তুমি একদম তোমার মতো—সরল, পবিত্র আর আমার পুরো পৃথিবী!”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 6: LOVE WISH JAR & BIRTHDAY COUPONS -->
+        <!-- ========================================================= -->
+        <section id="chapter-6" class="story-card rounded-3xl p-6 sm:p-10 text-center">
+            <span class="inline-block bg-amber-100 text-amber-800 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                🎁 অধ্যায় ০৬ • জন্মদিনের উপহার ও লাভ কুপন
+            </span>
+            <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">ভালোবাসার উইশ জার</h2>
+            <p class="text-gray-600 text-sm sm:text-base mb-6">জারে ক্লিক করে তোমার জন্মদিনের স্পেশাল লাভ কুপন তুলে নাও! (যেকোনো সময় মেহেদীর কাছ থেকে দাবি করতে পারবে 😉)</p>
+
+            <div class="max-w-md mx-auto">
+                <button onclick="pullLoveCoupon()" class="group relative inline-flex flex-col items-center justify-center w-44 h-48 bg-gradient-to-b from-rose-100/90 to-pink-200/90 border-4 border-rose-300 rounded-b-3xl rounded-t-xl shadow-xl hover:scale-105 active:scale-95 transition cursor-pointer">
+                    <!-- Jar Lid -->
+                    <div class="absolute -top-4 w-32 h-5 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 rounded-md shadow border border-amber-600"></div>
+                    <span class="text-5xl group-hover:animate-bounce">🏺</span>
+                    <span class="mt-2 font-bold text-rose-700 text-sm">চিরকুট তোলো ✨</span>
+                    <span class="text-xs text-rose-500">এখানে ট্যাপ করো</span>
+                </button>
+
+                <!-- Pulled Coupon Card -->
+                <div id="couponDisplay" class="hidden mt-6 bg-gradient-to-r from-amber-50 via-white to-rose-50 border-2 border-dashed border-rose-400 rounded-2xl p-5 shadow-md">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600">🎟️ জন্মদিনের স্পেশাল লাভ কুপন</span>
+                    <h3 id="couponTitle" class="text-xl font-bold text-rose-700 mt-1"></h3>
+                    <p id="couponDesc" class="text-gray-700 text-sm mt-1"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 7: SUMAIYA'S REPLY BOX (DIRECT MESSAGE TO MEHEDI) -->
+        <!-- ========================================================= -->
+        <section id="chapter-7" class="story-card rounded-3xl p-6 sm:p-10">
+            <div class="text-center mb-6">
+                <span class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-3">
+                    ✍️ অধ্যায় ০৭ • তোমার মনের কথা
+                </span>
+                <h2 class="font-script text-3xl sm:text-5xl text-rose-600 mb-2">মেহেদীর জন্য তোমার উত্তর 💌</h2>
+                <p class="text-gray-600 text-sm sm:text-base max-w-xl mx-auto">
+                    এই সারপ্রাইজটা তোমার কেমন লাগল? নিচে তোমার মনের অনুভূতি লিখে সরাসরি মেহেদীকে পাঠিয়ে দাও!
+                </p>
+            </div>
+
+            <div class="max-w-xl mx-auto space-y-4">
+                <div>
+                    <label for="sumaiyaReplyInput" class="block text-sm font-semibold text-rose-800 mb-2">
+                        প্রিয় সুমাইয়া, এখানে তোমার উত্তর লেখো:
+                    </label>
+                    <textarea id="sumaiyaReplyInput" rows="4" placeholder="যেমন: ধন্যবাদ মেহেদী! আমার জীবনের সেরা জন্মদিনের উপহার এটি... ❤️" class="w-full rounded-2xl border-2 border-rose-200 focus:border-rose-500 focus:ring-4 focus:ring-rose-100 p-4 text-gray-800 bg-white/95 outline-none transition resize-none"></textarea>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <button onclick="submitReply()" class="bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg shadow-rose-300/60 transition transform hover:scale-105 active:scale-95">
+                        উত্তর সংরক্ষণ ও প্রস্তুত করো 💌
+                    </button>
+                </div>
+
+                <!-- Confirmation & Direct Share Actions -->
+                <div id="replyConfirmationBox" class="hidden bg-rose-50/90 border border-rose-200 rounded-2xl p-5 text-center space-y-4 mt-4">
+                    <div class="text-3xl">🥰💖</div>
+                    <h4 class="font-bold text-rose-800 text-lg">তোমার ভালোবাসার উত্তরটি তৈরি!</h4>
+                    <p id="savedReplyPreview" class="italic text-gray-700 bg-white p-3 rounded-xl border border-rose-100 text-sm"></p>
+                    <p class="text-xs text-gray-600">নিচের যেকোনো বাটনে ক্লিক করে সরাসরি মেহেদীকে পাঠিয়ে দাও:</p>
+                    
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a id="whatsappSendBtn" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-5 py-2.5 rounded-full shadow transition">
+                            <span>📱 WhatsApp-এ পাঠাও</span>
+                        </a>
+                        <button onclick="copyReplyText()" class="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold px-5 py-2.5 rounded-full shadow transition">
+                            <span>📋 লেখা কপি করো (Messenger/SMS)</span>
+                        </button>
+                    </div>
+                    <p id="copySuccessMsg" class="hidden text-xs font-semibold text-emerald-700">✅ উত্তরটি কপি হয়েছে! এখন মেহেদীর ইনবক্সে পেস্ট করে পাঠিয়ে দাও।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- CHAPTER 8: FINAL PAGE (শেষ পাতা - ইতি, মেহেদী) -->
+        <!-- ========================================================= -->
+        <section id="chapter-8" class="story-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden border-2 border-rose-300/80">
+            <div class="inline-block bg-rose-100 text-rose-700 px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-4">
+                📖 অধ্যায় ০৮ • শেষ পাতা
+            </div>
+
+            <h2 class="font-script text-4xl sm:text-6xl text-rose-600 mb-4">
+                শুভ জন্মদিন, প্রিয়তমা সুমাইয়া ❤️
+            </h2>
+
+            <p class="font-serif-bn max-w-xl mx-auto text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+                এই বইয়ের পাতা এখানে শেষ হলেও, আমাদের ভালোবাসার গল্প কেবল শুরু। ৬ ডিসেম্বর ২০২৬—এই দিনটি আমার কাছে চিরকাল স্মরণীয় হয়ে থাকবে। ভালো থেকো, সুস্থ থেকো, আর সবসময় আমার হয়ে থেকো।
+            </p>
+
+            <div class="my-6 py-4 px-6 inline-block bg-gradient-to-r from-rose-50 via-pink-100 to-rose-50 rounded-2xl border border-rose-200 shadow-sm">
+                <p class="text-sm text-rose-600 font-semibold mb-1">চিরকাল তোমারই,</p>
+                <p class="font-script text-3xl sm:text-4xl text-rose-700">মেহেদী ❤️</p>
+            </div>
+
+            <div class="mt-4">
+                <button onclick="celebrateFinale()" class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition transform hover:scale-105">
+                    🎉 ভালোবাসার বৃষ্টি ঝরাও
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- FLOATING MINIMAL AUDIO PLAYER BAR -->
+    <!-- ========================================================= -->
+    <div class="fixed bottom-4 right-4 z-50">
+        <button id="playPauseBtn" onclick="toggleMusic()" class="bg-white/95 backdrop-blur-lg border border-rose-200 shadow-2xl rounded-full px-4 py-2.5 flex items-center gap-2.5 hover:scale-105 active:scale-95 transition" aria-label="Play or Pause MP3">
+            <span class="w-9 h-9 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white flex items-center justify-center shadow">
+                <span id="playIcon" class="text-sm ml-0.5">▶</span>
+            </span>
+            <div id="eqBars" class="flex items-end gap-0.5 h-4">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Hidden HTML5 MP3 Audio Element -->
+    <audio id="bgAudio" autoplay loop preload="auto">
+        <source src="1795482898278_20261124_071656 (1).mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ========================================================= -->
+    <!-- FULL-SCREEN PHOTO LIGHTBOX MODAL -->
+    <!-- ========================================================= -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox(event)">
+        <div class="relative max-w-lg w-full bg-white rounded-2xl p-4 sm:p-5 shadow-2xl text-center" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute -top-3 -right-3 w-9 h-9 bg-rose-600 text-white rounded-full font-bold shadow-lg hover:bg-rose-700 transition">✕</button>
+            <img id="lightboxImg" src="" alt="স্মৃতির ছবি" class="w-full max-h-[65vh] object-contain rounded-xl bg-rose-50 mx-auto">
+            <p id="lightboxCaption" class="font-serif-bn text-gray-800 text-sm sm:text-base mt-4 leading-relaxed px-2"></p>
+            <p id="lightboxTag" class="text-xs text-rose-500 font-semibold mt-2"></p>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 2. FLOWER BOUQUET SLIDESHOW
+        // ==========================================
+        const flowerBouquets = [
+            'https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=800&q=80',
+            'https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=800&q=80'
+        ];
+        let bouquetIdx = 0;
+
+        (function initBouquetSlideshow() {
+            const imgEl = document.getElementById('bouquetSlideImg');
+            const fallbackEl = document.getElementById('bouquetFallbackSvg');
+            const dotsContainer = document.getElementById('bouquetDots');
+
+            if (!imgEl || !dotsContainer) return;
+
+            imgEl.onerror = function () {
+                imgEl.classList.add('hidden');
+                fallbackEl.classList.remove('hidden');
+                fallbackEl.classList.add('flex');
+            };
+
+            flowerBouquets.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-rose-600 w-4' : 'bg-white/80'}`;
+                dotsContainer.appendChild(dot);
+            });
+
+            setInterval(() => {
+                bouquetIdx = (bouquetIdx + 1) % flowerBouquets.length;
+                imgEl.style.opacity = '0.25';
+                setTimeout(() => {
+                    imgEl.src = flowerBouquets[bouquetIdx];
+                    imgEl.style.opacity = '1';
+                    Array.from(dotsContainer.children).forEach((dot, i) => {
+                        dot.className = `w-2 h-2 rounded-full transition-all ${i === bouquetIdx ? 'bg-rose-600 w-4' : 'bg-white/80'}`;
+                    });
+                }, 300);
+            }, 3000);
+        })();
+
+        // ==========================================
+        // 3. POLAROID SCRAPBOOK GALLERY (ALL 10 PHOTOS)
+        // ==========================================
+        const memories = [
+            {
+                file: '1000110433.jpg',
+                rotate: '-2deg',
+                tag: 'স্মৃতি #০১ • কৃষ্ণচূড়ার বিকেল',
+                caption: '“তোমার হাতে একগুচ্ছ কৃষ্ণচূড়া, আর আমার কাছে পুরো পৃথিবীর সবচেয়ে সুন্দর মুহূর্ত। তোমার পাশে থাকলেই সাধারণ সময়গুলোও স্মৃতি হয়ে যায়।” 🌸'
+            },
+            {
+                file: '1000110462.jpg',
+                rotate: '1.8deg',
+                tag: 'স্মৃতি #০২ • নীল আকাশে সাদা ফুল ও তুমি',
+                caption: '“নীল আকাশের সাদা ফুলগুলোর চেয়েও স্নিগ্ধ তোমার ওই মিষ্টি হাসি আর রেশমি চুড়ির সাজ—যেন এক জীবন্ত কবিতা।” 🌼💙'
+            },
+            {
+                file: '1000110435.jpg',
+                rotate: '-1.5deg',
+                tag: 'স্মৃতি #০৩ • মানিব্যাগের ছোট্ট ফ্রেম',
+                caption: '“আমার মানিব্যাগের ছোট্ট এই ফ্রেমটার মতোই, আমার হৃদয়ের সবচেয়ে নিরাপদ জায়গায় শুধু তুমিই থাকো।” 🤎'
+            },
+            {
+                file: '1000110436.jpg',
+                rotate: '2deg',
+                tag: 'স্মৃতি #০৪ • প্রশান্তির আশ্রয়',
+                caption: '“আমার কাঁধে তোমার মাথা রাখার এই প্রশান্তিটুকুই আমার সারাজীবনের সবচেয়ে বড় চাওয়া।” 🦋'
+            },
+            {
+                file: '1000110437.jpg',
+                rotate: '-1.8deg',
+                tag: 'স্মৃতি #০৫ • ফুলের বাগানে তুমি',
+                caption: '“হাজারো ফুলের ভিড়েও আমার চোখ শুধু তোমাকেই খোঁজে, কারণ তুমিই আমার জীবনের সবচেয়ে সুন্দর ফুল।” 🌺'
+            },
+            {
+                file: '1000110438.jpg',
+                rotate: '1.5deg',
+                tag: 'স্মৃতি #০৬ • মিষ্টি মুহূর্ত',
+                caption: '“একসাথে ভাগ করে নেওয়া ছোট্ট একটা আইসক্রিমও তোমার সাথে থাকলে অমৃত মনে হয়।” 🍦💗'
+            },
+            {
+                file: '1000110439.jpg',
+                rotate: '-2.2deg',
+                tag: 'স্মৃতি #০৭ • পকেটে ভালোবাসার ফুল',
+                caption: '“আমার শার্টের পকেটে গুঁজে দেওয়া তোমার ভালোবাসার হলুদ ফুলগুলো আজও আমার হৃদয়ে সুবাস ছড়ায়।” 🌼'
+            },
+            {
+                file: '1000110440.jpg',
+                rotate: '1.6deg',
+                tag: 'স্মৃতি #০৮ • হাতের ওপর হাত',
+                caption: '“হাতের ওপর হাত রেখে দেওয়া এই নীরব প্রতিশ্রুতিটাই বলে দেয়—পথ যতই কঠিন হোক, আমরা একসাথেই হাঁটব।” 💍❤️'
+            },
+            {
+                file: '1000110441.jpg',
+                rotate: '-1.4deg',
+                tag: 'স্মৃতি #০৯ • পাশাপাশি পথচলা',
+                caption: '“পাশাপাশি দাঁড়িয়ে থাকা এই দুটো পায়ের মতোই, জীবনের প্রতিটি পথে আমি তোমার ছায়া হয়ে থাকতে চাই।” 👣💕'
+            },
+            {
+                file: '1000110428.jpg',
+                rotate: '1.9deg',
+                tag: 'স্মৃতি #১০ • বেলি ফুলের সুবাস ও চুড়ি',
+                caption: '“হাতে বেলি ফুলের মালা আর লাল-সবুজ চুড়ির এই অপরূপ সাজে তোমাকে ঠিক স্বপ্নের রাজকন্যার মতো লাগছে।” 🤍✨'
+            }
+        ];
+
+        function renderGallery() {
+            const grid = document.getElementById('polaroidGrid');
+            grid.innerHTML = '';
+
+            memories.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'polaroid flex flex-col justify-between';
+                card.style.transform = `rotate(${item.rotate})`;
+                card.onclick = () => openLightbox(idx);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="w-full aspect-square overflow-hidden rounded bg-rose-50 relative flex items-center justify-center">
+                            <img id="mem-img-${idx}" src="${item.file}" alt="${item.tag}"
+                                 class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                        </div>
+                        <p class="text-[11px] font-bold text-rose-500 mt-3 tracking-wide">${item.tag}</p>
+                        <p class="font-serif-bn text-gray-800 text-xs sm:text-sm leading-relaxed mt-1.5">
+                            ${item.caption}
+                        </p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        renderGallery();
+
+        // Lightbox Controls
+        function openLightbox(idx) {
+            const item = memories[idx];
+            const imgSrc = document.getElementById(`mem-img-${idx}`).src;
+            document.getElementById('lightboxImg').src = imgSrc;
+            document.getElementById('lightboxCaption').textContent = item.caption;
+            document.getElementById('lightboxTag').textContent = item.tag;
+            document.getElementById('lightboxModal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').classList.add('hidden');
+        }
+
+        // ==========================================
+        // 4. INTERACTIVE BIRTHDAY CAKE
+        // ==========================================
+        let candlesBlown = false;
+
+        function blowOutCandles() {
+            if (candlesBlown) return;
+            candlesBlown = true;
+
+            document.getElementById('flame1').classList.add('out');
+            document.getElementById('flame2').classList.add('out');
+            document.getElementById('smoke1').classList.add('rising');
+            document.getElementById('smoke2').classList.add('rising');
+
+            document.getElementById('blowCandleBtn').classList.add('hidden');
+            document.getElementById('cutCakeBtn').classList.remove('hidden');
+            document.getElementById('cakeStatusMsg').textContent = '✨ বাহ! তোমার সব মনের আশা পূরণ হোক, সুমাইয়া!';
+
+            fireConfetti();
+        }
+
+        function cutBirthdayCake() {
+            document.getElementById('cakeSliceLine').classList.remove('hidden');
+            document.getElementById('cutCakeBtn').textContent = 'কেক কাটা সম্পন্ন! 🍰❤️';
+            document.getElementById('cutCakeBtn').disabled = true;
+            document.getElementById('cakeStatusMsg').textContent = '🎉 শুভ ২০তম জন্মদিন, আমার জান! প্রথম টুকরো কেকটা কিন্তু আমার! 😘';
+            fireConfetti();
+        }
+
+        function fireConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 90,
+                    spread: 75,
+                    origin: { y: 0.65 },
+                    colors: ['#f43f5e', '#fb7185', '#fbbf24', '#ec4899']
+                });
+            }
+        }
+
+        // ==========================================
+        // 5. ANIMATED ENVELOPE TOGGLE
+        // ==========================================
+        function toggleLetter() {
+            const env = document.getElementById('loveEnvelope');
+            env.classList.toggle('open');
+        }
+
+        // ==========================================
+        // 6. LOVE WISH JAR COUPONS
+        // ==========================================
+        const loveCoupons = [
+            { title: '🍨 আইসক্রিম ডেট কুপন', desc: 'যেকোনো বিকেলে তোমার পছন্দের ফ্লেভারের আইসক্রিম খাওয়ানোর দায়িত্ব মেহেদীর!' },
+            { title: '🛺 লং রিকশা রাইড কুপন', desc: 'হাতে হাত রেখে কোনো এক মিষ্টি বিকেলে বিরতিহীন রিকশা ভ্রমণ।' },
+            { title: '🌸 কৃষ্ণচূড়া ও বুনো ফুল কুপন', desc: 'তোমার খোঁপায় গুঁজে দেওয়ার জন্য একগুচ্ছ তাজা ফুল উপহার।' },
+            { title: '👑 ফুল-টাইম মনোযোগ কুপন', desc: 'সারাদিন তোমার সব আবদার বিনা প্রশ্নে মেনে নেওয়ার গ্যারান্টি!' },
+            { title: '📸 আনলিমিটেড ফটোগ্রাফি কুপন', desc: 'মেহেদী হবে তোমার ব্যক্তিগত ফটোগ্রাফার—যত খুশি ছবি তোলা হবে!' }
+        ];
+        let couponIdx = 0;
+
+        function pullLoveCoupon() {
+            const box = document.getElementById('couponDisplay');
+            const item = loveCoupons[couponIdx % loveCoupons.length];
+            couponIdx++;
+
+            document.getElementById('couponTitle').textContent = item.title;
+            document.getElementById('couponDesc').textContent = item.desc;
+            box.classList.remove('hidden');
+            fireConfetti();
+        }
+
+        // ==========================================
+        // 7. SUMAIYA'S REPLY SYSTEM (NO BACKEND NEEDED)
+        // ==========================================
+        function submitReply() {
+            const input = document.getElementById('sumaiyaReplyInput').value.trim();
+            const finalMessage = input || 'শুভ ২০তম জন্মদিনের এই সুন্দর উপহারটির জন্য অনেক ভালোবাসা মেহেদী! ❤️';
+
+            try {
+                localStorage.setItem('sumaiya_birthday_reply_2026', finalMessage);
+            } catch (e) {}
+
+            const fullShareText = `প্রিয় মেহেদী ❤️,\nআমার ২০তম জন্মদিনের ভালোবাসার বইটি দেখে আমার উত্তর:\n"${finalMessage}"\n— ইতি, সুমাইয়া`;
+
+            document.getElementById('savedReplyPreview').textContent = `"${finalMessage}"`;
+            document.getElementById('whatsappSendBtn').href = `https://wa.me/?text=${encodeURIComponent(fullShareText)}`;
+            document.getElementById('replyConfirmationBox').classList.remove('hidden');
+            fireConfetti();
+        }
+
+        function copyReplyText() {
+            const input = document.getElementById('sumaiyaReplyInput').value.trim() || 'শুভ ২০তম জন্মদিনের এই সুন্দর উপহারটির জন্য অনেক ভালোবাসা মেহেদী! ❤️';
+            const fullShareText = `প্রিয় মেহেদী ❤️,\nআমার ২০তম জন্মদিনের ভালোবাসার বইটি দেখে আমার উত্তর:\n"${input}"\n— ইতি, সুমাইয়া`;
+
+            const tempArea = document.createElement('textarea');
+            tempArea.value = fullShareText;
+            document.body.appendChild(tempArea);
+            tempArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempArea);
+
+            const msg = document.getElementById('copySuccessMsg');
+            msg.classList.remove('hidden');
+            setTimeout(() => msg.classList.add('hidden'), 4000);
+        }
+
+        function celebrateFinale() {
+            fireConfetti();
+            setTimeout(fireConfetti, 400);
+        }
+
+        // ==========================================
+        // 8. ROMANTIC MUSIC PLAYER (MP3 + GENTLE MELODY FALLBACK)
+        // ==========================================
+        // 8. AUTO-PLAYING MP3 MUSIC CONTROLLER
+        // ==========================================
+        const bgAudio = document.getElementById('bgAudio');
+        let isPlaying = false;
+
+        function startJourney() {
+            playMp3Audio();
+            document.getElementById('chapter-2').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function playMp3Audio() {
+            if (!bgAudio) return;
+            const playPromise = bgAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    setPlayingUI(true);
+                }).catch(() => {
+                    setPlayingUI(false);
+                });
+            }
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgAudio.pause();
+                setPlayingUI(false);
+            } else {
+                playMp3Audio();
+            }
+        }
+
+        function setPlayingUI(playing) {
+            isPlaying = playing;
+            document.getElementById('playIcon').textContent = playing ? '⏸' : '▶';
+            const eq = document.getElementById('eqBars');
+            if (playing) {
+                eq.classList.add('playing');
+            } else {
+                eq.classList.remove('playing');
+            }
+        }
+
+        // Attempt immediate MP3 autoplay on page load & on first user interaction
+        window.addEventListener('DOMContentLoaded', () => {
+            playMp3Audio();
+        });
+
+        ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, function unlockAudioOnce() {
+                if (!isPlaying) {
+                    playMp3Audio();
+                }
+                if (isPlaying) {
+                    document.removeEventListener(evt, unlockAudioOnce);
+                }
+            }, { passive: true });
+        });
+    </script>
+</body>
+</html>
