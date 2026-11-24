@@ -378,6 +378,19 @@
 </head>
 <body class="antialiased selection:bg-rose-200 selection:text-rose-900 pb-28">
 
+    <!-- Welcome Entry Overlay (Unlocks Instant Music on Open) -->
+    <div id="welcomeOverlay" onclick="enterStorybook()" class="fixed inset-0 z-50 bg-gradient-to-br from-rose-100 via-pink-100 to-amber-50 flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-opacity duration-700">
+        <div class="max-w-md w-full bg-white/90 backdrop-blur-md border-2 border-rose-200 rounded-3xl p-8 shadow-2xl transform transition hover:scale-105">
+            <div class="text-6xl mb-4 animate-bounce">🎁❤️</div>
+            <p class="text-xs font-semibold text-rose-500 uppercase tracking-widest mb-2">৬ ডিসেম্বর ২০২৬ • বিশেষ উপহার</p>
+            <h2 class="font-script text-3xl sm:text-4xl text-rose-600 mb-3">প্রিয়তমা সুমাইয়ার জন্য</h2>
+            <p class="text-gray-600 text-sm sm:text-base mb-6">তোমার ২০তম জন্মদিনের ছোট্ট এই ভালোবাসার বইটি খুলতে নিচে ট্যাপ করো</p>
+            <button type="button" class="bg-gradient-to-r from-rose-500 to-pink-600 text-white font-semibold px-7 py-3.5 rounded-full shadow-lg shadow-rose-300/70 animate-pulse">
+                ✨ ভালোবাসার বই খোলো ✨
+            </button>
+        </div>
+    </div>
+
     <!-- Floating Hearts & Flowers Container -->
     <div id="floatingBg" class="floating-bg"></div>
 
@@ -1096,6 +1109,18 @@
         const bgAudio = document.getElementById('bgAudio');
         let isPlaying = false;
 
+        function enterStorybook() {
+            playMp3Audio();
+            const overlay = document.getElementById('welcomeOverlay');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 700);
+            }
+            fireConfetti();
+        }
+
         function startJourney() {
             playMp3Audio();
             document.getElementById('chapter-2').scrollIntoView({ behavior: 'smooth' });
@@ -1103,6 +1128,8 @@
 
         function playMp3Audio() {
             if (!bgAudio) return;
+            bgAudio.muted = false;
+            bgAudio.volume = 1.0;
             const playPromise = bgAudio.play();
             if (playPromise !== undefined) {
                 playPromise.then(() => {
